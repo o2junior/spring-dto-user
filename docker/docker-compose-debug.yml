@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  spring_dto:
+    build:
+      context: .\sql
+    image: spring-dto
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "db_spring_dto"
+      POSTGRES_PASSWORD: "123456"
+    ports:
+      - "5432:5432"
+    networks:
+      - spring-dto-network
+
+networks:
+  spring-dto-network:
+    driver: bridge

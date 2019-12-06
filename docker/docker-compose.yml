@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  app-preferences:
+    build:
+      context: .\app
+      dockerfile: Dockerfile
+    environment:
+      - SPRING-DB-URL=jdbc:postgresql://localhost:5432/db_spring_dto
+      - SPRING-DB-USER=postgres
+      - SPRING-DB-PWD=123456
+      - SERVER_PORT=8085
+    ports:
+      - "80:8085"
+    networks:
+      - spring-dto-network
+
+networks:
+  spring-dto-network:
+    driver: bridge
