@@ -28,9 +28,11 @@ public class UserController {
     private static final Gson gson = new Gson();
 
     /*TODO
-        1.is_admin
-        2.update_user
-        3.include cpf
+        Backlog, new features:
+            1.is_admin
+            2.update_user
+            3.include cpf
+            4.actuator
      */
 
     @ApiOperation(value="Create user. ")
@@ -46,10 +48,10 @@ public class UserController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UserResponseDTO>> listUser() {
         List<User> list = userService.listUser();
-        List<UserResponseDTO> listDto = list.stream()
-                .map(obj -> UserResponseDTO.toUserResponseDTO(obj))
-                .collect(Collectors.toList());
-        return ResponseEntity.ok().body(listDto);
+            List<UserResponseDTO> listDto = list.stream()
+                    .map(obj -> UserResponseDTO.toUserResponseDTO(obj))
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok().body(listDto);
     }
 
     @ApiOperation(value="Get user by id. ")
